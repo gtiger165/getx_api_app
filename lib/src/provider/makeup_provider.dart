@@ -1,14 +1,10 @@
-import 'package:get/get_connect.dart';
+import 'package:getx_api_app/core/extensions/base_provider.dart';
 import 'package:getx_api_app/src/model/make_up_model/make_up_model.dart';
 
-class MakeUpProvider extends GetConnect {
+class MakeUpProvider extends BaseProvider {
   Future<List<MakeUpModel>> fetchProducts() async {
-    final response = await get(
-      'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline',
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, HEAD"
-      },
+    final response = await getWithEndpoint(
+      'products.json?brand=maybelline',
     );
 
     if (response.status.hasError) return Future.error("${response.statusText}");

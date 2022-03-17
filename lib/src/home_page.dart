@@ -16,7 +16,7 @@ class HomePage extends GetView<HomeController> {
           (state) => ListView.builder(
             itemCount: state?.length,
             itemBuilder: (context, i) => ListTile(
-              title: Text("Product : ${state?[i].brand}"),
+              title: Text("Product : ${state?[i].name}"),
             ),
           ),
           onEmpty: const Text("Empty data"),
